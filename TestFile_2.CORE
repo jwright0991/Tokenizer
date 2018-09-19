@@ -1,0 +1,6 @@
+program
+  int ABC;
+  begin
+    ABC = 25;
+    write ABC;
+  end
