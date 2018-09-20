@@ -8,7 +8,7 @@ intRegEx = r"[1-9][0-9]*|0"
 identifierRegEx = r"[A-Z]+[0-9]*"
 
 class Test_Tokenizer(unittest.TestCase):
-
+    
     def test_getStartOfNextToken_3(self):
         fileName = "TestFile_1.CORE"
         file = open(fileName, "r")
@@ -182,16 +182,14 @@ class Test_Tokenizer(unittest.TestCase):
         file.close()
         self.assertEqual(False,tokenizer._Tokenizer__isAcceptedInteger(testStr))
     def test_Tokenizer_1(self):
-        fileName = "TestFile_1.CORE"
+        fileName = "test-pa1/validAllOneLine.core"
         file = open(fileName, "r")
         tokenizer = Tokenizer(file,spacers,reserved,specialSymbols,intRegEx,identifierRegEx)
         tokenizer.tokenize()
         file.close()
-        expected_tokens = {1: ['program', 'int', 'ABC', ';'], 2: [], 3: ['begin'], 4: [], 5: ['end'], 6: ['__EOF__']}
-        expected_output = [1,4,32,14,2,3,33]
-        self.assertEqual(expected_tokens,tokenizer.tokens)
+        expected_output = [1,4,32,15,32,14,2,32,16,31,14,8,20,32,29,31,21,9,11,32,14,10,32,14,3,14,3,33]
         self.assertEqual(expected_output,tokenizer.tokens_output)
-    
+        
 if __name__ =='__main__':
     unittest.main()
 
